@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Game sheet</name>
+    <events>
+        <variable constant="0" name="offset" sid="9264239009180721" static="0" type="number">0</variable>
+        <variable constant="0" name="gameStarted" sid="4124637698006202" static="0" type="number">0</variable>
+        <event-block sid="9790252604394051">
+            <conditions>
+                <condition id="0" name="On click" sid="6696657162136166" type="mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="7718771214287364">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="2275509616350264" type="System">
+                            <param id="0" name="Variable">gameStarted</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="8287785441523026" type="System">
+                            <param id="0" name="Variable">gameStarted</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="8053045595237346" type="plane">
+                            <param id="0" name="Instance variable">gravity</param>
+                            <param id="1" name="Value">-7</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="5833122748041812" type="tap">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6253313254472725">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="5973614553173436" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="9776906843256679" type="plane">
+                            <param id="0" name="Instance variable">gravity</param>
+                            <param id="1" name="Value">-7</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="3203645885152705">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="4398354366758353" type="System">
+                    <param id="0" name="Interval (seconds)">2</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="567661894562817" type="System">
+                    <param id="0" name="Variable">gameStarted</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="1827886921111131" type="System">
+                    <param id="0" name="Variable">offset</param>
+                    <param id="1" name="Value">random(-60) + random(60)</param>
+                </action>
+                <action id="-3" name="Create object" sid="5529241823719726" type="System">
+                    <param id="0" name="Object to create">rockBottom</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="X">930</param>
+                    <param id="3" name="Y">420 + offset</param>
+                </action>
+                <action id="-3" name="Create object" sid="5799092577909309" type="System">
+                    <param id="0" name="Object to create">rockTop</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="X">930</param>
+                    <param id="3" name="Y">40 + offset</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="4297763744706421">
+            <conditions>
+                <condition id="-1" name="Compare X" sid="6316611138152307" type="bg">
+                    <param id="0" name="Comparison">2</param>
+                    <param id="1" name="X co-ordinate">-WindowWidth</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="4973825522818822" type="bg">
+                    <param id="0" name="X">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6924860718549818">
+            <conditions>
+                <condition id="-1" name="Compare X" sid="1598080656408275" type="ground">
+                    <param id="0" name="Comparison">2</param>
+                    <param id="1" name="X co-ordinate">-WindowWidth</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="2458096715798694" type="ground">
+                    <param id="0" name="X">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="155756393072386">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="6247287000625415" type="System" />
+            </conditions>
+            <actions>
+                <action id="-23" name="Move at angle" sid="1705660842325678" type="rockBottom">
+                    <param id="0" name="Angle">0</param>
+                    <param id="1" name="Distance">-8</param>
+                </action>
+                <action id="-23" name="Move at angle" sid="974822968463987" type="rockTop">
+                    <param id="0" name="Angle">0</param>
+                    <param id="1" name="Distance">-8</param>
+                </action>
+                <action id="-1" name="Set X" sid="3201497184624468" type="ground">
+                    <param id="0" name="X">Self.X - 8</param>
+                </action>
+                <action id="-1" name="Set X" sid="9565901941332468" type="bg">
+                    <param id="0" name="X">Self.X - 4</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="5186931171147282">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="947748545987186" type="System">
+                            <param id="0" name="Variable">gameStarted</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Add to" sid="2702934411196494" type="plane">
+                            <param id="0" name="Instance variable">gravity</param>
+                            <param id="1" name="Value">0.3</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="539061441611771" type="plane">
+                            <param id="0" name="Y">Self.Y + Self.gravity</param>
+                        </action>
+                        <action id="-8" name="Set angle" sid="9243063508370321" type="plane">
+                            <param id="0" name="Angle">Self.gravity*2</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="6354717453777177">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="6914500396015099" type="plane">
+                    <param id="0" name="Object">rocks</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="1603302499423713" type="System">
+                    <param id="0" name="Variable">gameStarted</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-26" name="Restart layout" sid="986919124799889" type="System" />
+            </actions>
+        </event-block>
+        <event-block sid="9160896800272365">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="3289017902152851" type="System" />
+            </conditions>
+            <actions>
+                <action id="-5" name="Set width" sid="4529101728740825" type="ground">
+                    <param id="0" name="Width">self.Width*2</param>
+                </action>
+                <action id="-5" name="Set width" sid="727031186294794" type="bg">
+                    <param id="0" name="Width">self.Width*2</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
